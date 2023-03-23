@@ -11,7 +11,7 @@
   
   <title>
     
-      Archives 
+      DML SELECT 
       
       
       |
@@ -106,59 +106,149 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2023</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">DML SELECT</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2023-03-23 14:59:53
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <p>SELECT문은 테이블을 구성하는 튜플(행)들 중에서 <strong>전체 또는 조건을 만족하는 튜플(행)을 검색하여 주기억장치 상에 임시 테이블로 구성</strong>하는 명령문이다.</p>
+<h2 id="일반-형식"><a href="#일반-형식" class="headerlink" title="일반 형식"></a>일반 형식</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT PREDICATE [테이블명,]속성명1, [테이블명,]속성명2, ...</span><br><span class="line">FROM 테이블명1, 테이블명2,...</span><br><span class="line">[WHERE 조건]</span><br><span class="line">[GROUP BY 속성명1, 속성명2, ...]</span><br><span class="line">[HAVING 조건]</span><br><span class="line">[ORDER BY 속성명 [ASC | DEAC]];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>속성명 : 검색하여 불러온 속성(열) 또는 속성을 이용한 수식을 지정한다.<ul>
+<li>기본 테이블을 구성하는 모든 속성을 지정할 때는 ‘*‘를 기술한다.</li>
+<li>두 개 이상의 테이블을 대상으로 검색할 때는 ‘테이블명.속성명’으로 표현한다.</li>
+</ul>
+</li>
+<li>PREDICATE : 불러올 튜플 수를 제한할 명령어를 기술한다.<ul>
+<li>ALL : 모든 튜플을 검색할 때 지정하는 것으로, 주로 생략합니다.</li>
+<li>DISTINCT : 중복된 튜플이 있으면 그 중 첫 번째 한 개만 검색합니다.</li>
+<li>DISINCTROW : 중복된 튜플을 제거하고 한 개만 검색하지만 선택된 속성의 값이 아닌, 튜플 전체를 대상으로 합니다.</li>
+</ul>
+</li>
+</ul>
+<BR>
+
+<ul>
+<li>FORM절 : 질의에 의해 검색될 데이터들을 포함하는 테이블명을 기술한다.</li>
+<li>WHERE절 : 검색할 조건을 기술한다.</li>
+<li>GROUP BY절 : 특정 속성을 기준으로 그룹화하여 검색할 때 그룹화할 속성을 지정한다.</li>
+<li>일반적으로 GROUP BY절은 그룹 함수와 함께 사용된다.</li>
+<li>HAVING절 : GROUP BY와 함께 사용되며, 그룹에 대한 조건을 지정한다.</li>
+<li>ORDER BY절 : 특정 속성을 기준으로 정렬하며 검색할 때 사용한다.<ul>
+<li>속성명 : 정렬의 기준이 되는 속성명을 기술한다.</li>
+<li>[ASC|DESC] : 정렬 방식으로서’ASC’는 오름차순, ‘DESC’는 내림차순이다, 생략하면 오름차순’ASC’으로 지정된다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="기본검색"><a href="#기본검색" class="headerlink" title="기본검색"></a>기본검색</h2><p>SELECT절에 원하는 속성을 지정하여 검색한다.</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2023/03/23/DML/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2023-03-23 14:59:53
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="DML SELECT">
-        <div class="time-m-d">03-23</div>
-        <div class="title">
-          <a href="/2023/03/23/DML-SELECT/">
-            <span>DML SELECT</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="DML">
-        <div class="time-m-d">03-23</div>
-        <div class="title">
-          <a href="/2023/03/23/DML/">
-            <span>DML</span>
-          </a>
-        </div>
-      </div>
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EC%9D%BC%EB%B0%98-%ED%98%95%EC%8B%9D"><span class="toc-text">일반 형식</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EA%B8%B0%EB%B3%B8%EA%B2%80%EC%83%89"><span class="toc-text">기본검색</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
     
-      <div class="post-item" title="DCL">
-        <div class="time-m-d">03-23</div>
-        <div class="title">
-          <a href="/2023/03/23/DCL/">
-            <span>DCL</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="정보처리 기능사 실기 [SQL의 개념]">
-        <div class="time-m-d">03-20</div>
-        <div class="title">
-          <a href="/2023/03/20/%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC-%EA%B8%B0%EB%8A%A5%EC%82%AC-%EC%8B%A4%EA%B8%B0-SQL%EC%9D%98-%EA%B0%9C%EB%85%90/">
-            <span>정보처리 기능사 실기 [SQL의 개념]</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         
 <div class="footer">
@@ -413,6 +503,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + DML%20SELECT + '&url=' + http%3A%2F%2Fexample.com%2F2023%2F03%2F23%2FDML-SELECT%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2023/03/23/DML-SELECT/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>

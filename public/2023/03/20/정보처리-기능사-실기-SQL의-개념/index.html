@@ -300,10 +300,65 @@
 <li>FOREIGN KEY ~ REFERENCES ~<ul>
 <li>참조할 다른 테이블과 그 테이블을 참조할 때 사용할 외래키 속성을 지정 한다.</li>
 <li>외래키가 지정되면 참조 무결성의 CASCADE 법칙이 적용된다.</li>
+<li>CONSTRAINT : 제약 조건의 이름을 지정한다. 이름을 지정할 필요가 없으면 CHECK절만 사용하여 속성 값에 대한 제약 조건을 명시한다.</li>
+<li>CHECK : 속성 값에 대한 제약 조건을 정의한다.</li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+<h2 id="CREATE-VIEW"><a href="#CREATE-VIEW" class="headerlink" title="CREATE VIEW"></a>CREATE VIEW</h2><ul>
+<li>CREATE VIEW는 뷰(View)를 정의하는 명령문이다. -표기 형식<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW 뷰명[(속성명[,속성명, ...])]</span><br><span class="line">AS SELECT문;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>SELECT문은 서브 쿼리로 사용하여 SELECT문의 결과로서 뷰를 생성한다.</li>
+<li>서브 쿼리인 SELECT문에는 UNION이나 ORDER BY절을 사용할 수 없다.</li>
+<li>속성명을 기술하지 않으면 SELECT문의 속성명이 자동으로 사용된다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="CREATE-INDEX"><a href="#CREATE-INDEX" class="headerlink" title="CREATE INDEX"></a>CREATE INDEX</h2><ul>
+<li>CREATE INDEX는 인덱스를 정의하는 명령문이다.<ul>
+<li>표기형식<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE [UNIQUE] INDEX 인덱스명</span><br><span class="line">ON 테이블명(속성명 [ASC | DESC] [,속성명 [ASC | DESC]])</span><br><span class="line">[CLUSTER];</span><br></pre></td></tr></table></figure></li>
+<li>UNIQUE<ul>
+<li>사용된 경우 : 중복 값이 없는 고유한 특성을 갖는 인덱스를 생성한다.</li>
+<li>생략된 경우 : 중복 값을 허용하는 인덱스를 생성한다.</li>
+</ul>
+</li>
+<li>정렬 여부 지정<ul>
+<li>ASC : 오름차순 정렬</li>
+<li>DESC : 내림차순 정렬</li>
+<li>생략된 경우 : 오름차순(ASC)으로 정렬됨<br>-CLUSTER : 사용하면 인덱스가 클러스터드 인덱스로 설정됨</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ALTER-TABLE"><a href="#ALTER-TABLE" class="headerlink" title="ALTER TABLE"></a>ALTER TABLE</h2><p>ALTER TABLE은 테이블에 대한 정의를 변경하는 명령문이다.</p>
+<ul>
+<li>표기형식</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 테이블명 ADD 속성명 데이터_타입;</span><br><span class="line">ALTER TABLE 테이블명 ALTER 속성명 데이터_타입;</span><br><span class="line">ALTER TABLE 테이블명 DROP COLUMN 속성명 [CASCADE];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ADD : 새로운 속성(열)을 추가할 때 사용한다.</li>
+<li>ALTER : 특정 속성의 데이터 타입이나 크기를 변경할 때 사용한다.</li>
+<li>DROP COLUMN : 특정 속성을 삭제할 때 사용한다.</li>
+</ul>
+<h2 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h2><p>DROP은 스키마, 도메인, 기본 테이블, 뷰 테이블, 인덱스, 제약 조건 등을 제거 하는 명령문이다.</p>
+<ul>
+<li>표기형식</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DROP SCHEMA 스키마명 [CASCADE | RESTRICT];</span><br><span class="line">DROP DOMAIN 도메인명 [CASCADE | RESTRICT];</span><br><span class="line">DROP TABLE 테이블명 [CASCADE | RESTRICT];</span><br><span class="line">DROP VIEW 뷰명 [CASCADE | RESTRICT];</span><br><span class="line">DROP INDEX 인덱스명 [CASCADE | RESTRICT];</span><br><span class="line">DROP CONSTRAINT 제약조건명 [CASCADE | RESTRICT];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>DROP SCHEMA : 스키마를 제거한다.</li>
+<li>DROP DOMAIN : 도메인을 제거한다.</li>
+<li>DROP TABLE : 테이블을 제거한다.</li>
+<li>DROP VIE : 뷰를 제거한다.</li>
+<li>DROP INDEX : 인덱스를 제거한다.</li>
+<li>DROP CONSTRAINT : 제약 조건을 제거한다.</li>
+<li>CASCADE : 제거할 요소를 참조하는 다른 모든 개체를 함께 제거한다. 즉<br>주 테이블의 데이터 제거 시 각 외래키와 관계를 맺고 있는 모든 데이터를 제거하는 참조 무결성 제약 조건을 설정하기 위해 사용된다.</li>
+<li>RESTRICT : 다른 개체가 제거할 요소를 참조중일 때는 제거를 취소 한다.</li>
 </ul>
 
       </div>
@@ -321,6 +376,11 @@
           </div>
           <div class="post-foot-prev">
             
+              <a href="/2023/03/23/DCL/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -333,7 +393,7 @@
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%EC%9D%98-%EA%B0%9C%EC%9A%94"><span class="toc-text">SQL의 개요</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%EC%9D%98-%EB%B6%84%EB%A5%98"><span class="toc-text">SQL의 분류</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EC%9D%98%EC%96%B4-DDL-%EC%9D%98-3%EA%B0%80%EC%A7%80-%EC%9C%A0%ED%98%95"><span class="toc-text">데이터 정의어(DDL)의 3가지 유형</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DDL-Data-Define-Language-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EC%9D%98%EC%96%B4-%EC%9D%98-%EA%B0%9C%EB%85%90"><span class="toc-text">DDL(Data Define Language, 데이터 정의어)의 개념</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CREATE-SCHEMA"><span class="toc-text">CREATE SCHEMA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CREATE-DOMAIN"><span class="toc-text">CREATE DOMAIN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CREATE-TABLE"><span class="toc-text">CREATE TABLE</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%EC%9D%98-%EA%B0%9C%EC%9A%94"><span class="toc-text">SQL의 개요</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%EC%9D%98-%EB%B6%84%EB%A5%98"><span class="toc-text">SQL의 분류</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EC%9D%98%EC%96%B4-DDL-%EC%9D%98-3%EA%B0%80%EC%A7%80-%EC%9C%A0%ED%98%95"><span class="toc-text">데이터 정의어(DDL)의 3가지 유형</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DDL-Data-Define-Language-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EC%9D%98%EC%96%B4-%EC%9D%98-%EA%B0%9C%EB%85%90"><span class="toc-text">DDL(Data Define Language, 데이터 정의어)의 개념</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CREATE-SCHEMA"><span class="toc-text">CREATE SCHEMA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CREATE-DOMAIN"><span class="toc-text">CREATE DOMAIN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CREATE-TABLE"><span class="toc-text">CREATE TABLE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CREATE-VIEW"><span class="toc-text">CREATE VIEW</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CREATE-INDEX"><span class="toc-text">CREATE INDEX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ALTER-TABLE"><span class="toc-text">ALTER TABLE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DROP"><span class="toc-text">DROP</span></a></li></ol>
       
     </div>
   </div>

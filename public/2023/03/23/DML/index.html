@@ -11,7 +11,7 @@
   
   <title>
     
-      Archives 
+      DML 
       
       
       |
@@ -106,59 +106,245 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2023</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">DML</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2023-03-23 14:43:34
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <h2 id="DML-Data-Maipulation-Language-데이터-조작어-의-개념"><a href="#DML-Data-Maipulation-Language-데이터-조작어-의-개념" class="headerlink" title="DML(Data Maipulation Language, 데이터 조작어)의 개념"></a>DML(Data Maipulation Language, 데이터 조작어)의 개념</h2><p>DML(데이터 조작어)는 데이터베이스 사용자가 <strong>응용 프로그램이나 질의어를 통해 저장된 데이터를 실질적으로 관리</strong>하는데 사용되는 언어이다.</p>
+<ul>
+<li>DML은 데이터베이스 사용자와 데이터베이스 관리 시스템 간의 인터페이스를 제공한다.</li>
+<li>DML의 유형</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>명령문</th>
+<th>기능</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SELECT</td>
+<td>테이블에서 튜플을 검색한다</td>
+</tr>
+<tr>
+<td>INSERT</td>
+<td>테이블에서 새로운 튜플을 삽입한다</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>테이블에서 튜플을 삭제한다</td>
+</tr>
+<tr>
+<td>UPDATE</td>
+<td>테이블에서 튜플의 내용을 갱신한다</td>
+</tr>
+</tbody></table>
+<h2 id="삽입문-INSERT-INTO"><a href="#삽입문-INSERT-INTO" class="headerlink" title="삽입문(INSERT INTO~)"></a>삽입문(INSERT INTO~)</h2><p>삽입문은 기본 테이블에 새로운 튜플을 삽입할 때 사용한다.</p>
+<ul>
+<li>일반 형식</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 테이블명([속성명1, 속성명2,...]);</span><br><span class="line">VALUES (데이터1, 데이터2,...);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>대응하는 속성과 데이터는 개수와 데이터 유형이 일치해야 한다.</li>
+<li>기본 테이블의 모든 속성을 사용할 때는 속성명을 생략할 수 있다.</li>
+<li>SELECT문을 사용하여 다른 테이블의 검색 결과를 삽입할 수 있다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>이름</th>
+<th>부서</th>
+<th>생일</th>
+<th>주소</th>
+<th>기본급</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>홍길동</td>
+<td>기획</td>
+<td>04&#x2F;05&#x2F;06</td>
+<td>망원동</td>
+<td>120</td>
+</tr>
+<tr>
+<td>임꺽정</td>
+<td>인터넷</td>
+<td>01&#x2F;09&#x2F;69</td>
+<td>성산동</td>
+<td>80</td>
+</tr>
+<tr>
+<td>황진이</td>
+<td>편집</td>
+<td>07&#x2F;21&#x2F;75</td>
+<td>연희동</td>
+<td>100</td>
+</tr>
+<tr>
+<td>김선달</td>
+<td>편집</td>
+<td>10&#x2F;22&#x2F;23</td>
+<td>망원동</td>
+<td>90</td>
+</tr>
+<tr>
+<td>선춘향</td>
+<td>기획</td>
+<td>02&#x2F;20&#x2F;64</td>
+<td>망원동</td>
+<td>100</td>
+</tr>
+<tr>
+<td>장길산</td>
+<td>편집</td>
+<td>03&#x2F;11&#x2F;67</td>
+<td>상암동</td>
+<td>120</td>
+</tr>
+<tr>
+<td>일지매</td>
+<td>기획</td>
+<td>04&#x2F;29&#x2F;78</td>
+<td>합정동</td>
+<td>110</td>
+</tr>
+<tr>
+<td>강호동</td>
+<td>인터넷</td>
+<td>12&#x2F;11&#x2F;80</td>
+<td></td>
+<td>90</td>
+</tr>
+</tbody></table>
+<h2 id="삭제문-DELETE-FROM"><a href="#삭제문-DELETE-FROM" class="headerlink" title="삭제문(DELETE FROM~)"></a>삭제문(DELETE FROM~)</h2><p>삭제문은 기본 테이블에 있는 튜플들 중에서 특정 튜플(행)을 삭제할 때 사용한다.</p>
+<ul>
+<li>일반 형식</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DELETE</span><br><span class="line">FROM 테이블명</span><br><span class="line">[WHEER 조건];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>모든 레코드를 삭제할 때는 <strong>WHERE절을 생략</strong>한다.</li>
+<li>모든 레코드를 삭제하더라도 테이블 구조는 남아 있기 때문에 디스크에서 테이블을 완전히 제거하는 DROP과는 다르다.</li>
+</ul>
+<h2 id="갱신문-UPDATE-SET"><a href="#갱신문-UPDATE-SET" class="headerlink" title="갱신문(UPDATE~ SET~)"></a>갱신문(UPDATE~ SET~)</h2><p>갱신문은 기본 테이블에 있는 튜플들 중에서 <strong>특정 튜플의 내용을 변경</strong>할 때 사용한다.</p>
+<ul>
+<li>일반 형식</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 테이블명</span><br><span class="line">SET 속성명 = 데이터[, 속성명=데이터, ...]</span><br><span class="line">[WHERE 조건];</span><br></pre></td></tr></table></figure>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2023/03/23/DCL/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2023-03-23 14:43:34
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2023/03/23/DML-SELECT/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
         </div>
       
-      <div class="post-item" title="DML SELECT">
-        <div class="time-m-d">03-23</div>
-        <div class="title">
-          <a href="/2023/03/23/DML-SELECT/">
-            <span>DML SELECT</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="DML">
-        <div class="time-m-d">03-23</div>
-        <div class="title">
-          <a href="/2023/03/23/DML/">
-            <span>DML</span>
-          </a>
-        </div>
-      </div>
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DML-Data-Maipulation-Language-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A1%B0%EC%9E%91%EC%96%B4-%EC%9D%98-%EA%B0%9C%EB%85%90"><span class="toc-text">DML(Data Maipulation Language, 데이터 조작어)의 개념</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EC%82%BD%EC%9E%85%EB%AC%B8-INSERT-INTO"><span class="toc-text">삽입문(INSERT INTO~)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EC%82%AD%EC%A0%9C%EB%AC%B8-DELETE-FROM"><span class="toc-text">삭제문(DELETE FROM~)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EA%B0%B1%EC%8B%A0%EB%AC%B8-UPDATE-SET"><span class="toc-text">갱신문(UPDATE~ SET~)</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
     
-      <div class="post-item" title="DCL">
-        <div class="time-m-d">03-23</div>
-        <div class="title">
-          <a href="/2023/03/23/DCL/">
-            <span>DCL</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="정보처리 기능사 실기 [SQL의 개념]">
-        <div class="time-m-d">03-20</div>
-        <div class="title">
-          <a href="/2023/03/20/%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC-%EA%B8%B0%EB%8A%A5%EC%82%AC-%EC%8B%A4%EA%B8%B0-SQL%EC%9D%98-%EA%B0%9C%EB%85%90/">
-            <span>정보처리 기능사 실기 [SQL의 개념]</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         
 <div class="footer">
@@ -413,6 +599,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + DML + '&url=' + http%3A%2F%2Fexample.com%2F2023%2F03%2F23%2FDML%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2023/03/23/DML/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
