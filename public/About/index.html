@@ -11,7 +11,7 @@
   
   <title>
     
-      archive_a: 2023/3 
+      About 
       
       
       |
@@ -98,59 +98,98 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2023</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">About</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2023-03-24 03:41:42
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <p>아… 하고싶다…</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;profile&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;김재민&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;birth&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2005 11 10&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;website&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://deopa0402.github.io&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;알아서 뭐하게&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;country&quot;</span><span class="punctuation">:</span> <span class="string">&quot;KR&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2023-03-24 03:41:42
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="DML SELECT">
-        <div class="time-m-d">03-23</div>
-        <div class="title">
-          <a href="/2023/03/23/DML-SELECT/">
-            <span>DML SELECT</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="DML">
-        <div class="time-m-d">03-23</div>
-        <div class="title">
-          <a href="/2023/03/23/DML/">
-            <span>DML</span>
-          </a>
-        </div>
-      </div>
+
     
-      <div class="post-item" title="DCL">
-        <div class="time-m-d">03-23</div>
-        <div class="title">
-          <a href="/2023/03/23/DCL/">
-            <span>DCL</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="정보처리 기능사 실기 [SQL의 개념]">
-        <div class="time-m-d">03-20</div>
-        <div class="title">
-          <a href="/2023/03/20/%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC-%EA%B8%B0%EB%8A%A5%EC%82%AC-%EC%8B%A4%EA%B8%B0-SQL%EC%9D%98-%EA%B0%9C%EB%85%90/">
-            <span>정보처리 기능사 실기 [SQL의 개념]</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         
 <div class="footer">
@@ -405,6 +444,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + About + '&url=' + http%3A%2F%2Fexample.com%2FAbout%2Findex.html + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/About/index.html" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
